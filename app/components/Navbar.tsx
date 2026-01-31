@@ -293,8 +293,8 @@ export default function Navbar() {
             MEHEDI<span style={{ fontSize: '0.75em', verticalAlign: 'super' }}>®</span>
           </Link>
 
-          {/* Desktop Navigation Links - Center (absolute center) with pill background */}
-          <div className="hidden lg:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full" style={{
+          {/* Desktop Navigation Links - Right Side with pill background */}
+          <div className="hidden lg:flex items-center gap-6 px-6 py-3 rounded-full flex-shrink-0" style={{
             background: 'rgba(34, 211, 238, 0.08)',
             backdropFilter: 'blur(10px)',
             border: '1px solid rgba(34, 211, 238, 0.15)',
@@ -498,10 +498,6 @@ export default function Navbar() {
             >
               Book a Call
             </button>
-          </div>
-
-          {/* Right Side - Theme Toggle & Mobile Menu */}
-          <div className="flex items-center gap-3 md:gap-6 flex-shrink-0">
 
             {/* Theme Toggle on Mobile Only */}
             <button
