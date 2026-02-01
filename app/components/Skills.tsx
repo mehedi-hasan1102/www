@@ -70,10 +70,33 @@ const skillCategories: SkillCategory[] = [
 
 const MagneticSkillTag = ({
   skill,
+  index,
 }: {
   skill: Skill;
+  index: number;
 }) => {
   const tagRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!tagRef.current) return;
+
+    gsap.set(tagRef.current, { opacity: 0, y: 20, scale: 0.8 });
+
+    ScrollTrigger.create({
+      trigger: tagRef.current,
+      start: "top 85%",
+      onEnter: () => {
+        gsap.to(tagRef.current, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          delay: index * 0.05,
+          ease: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        });
+      },
+    });
+  }, [index]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!tagRef.current) return;
@@ -84,7 +107,7 @@ const MagneticSkillTag = ({
     gsap.to(tagRef.current, {
       x: x * 0.4,
       y: y * 0.4,
-      scale: 1.1,
+      scale: 1.15,
       duration: 0.3,
       ease: "power2.out",
     });
@@ -126,25 +149,46 @@ const BentoCard = ({
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const card = cardRef.current;
+    const content = contentRef.current;
+    
     if (!card) return;
 
-    gsap.set(card, { opacity: 0, y: 80, rotateX: -15 });
+    // Initial states
+    gsap.set(card, { 
+      opacity: 0, 
+      y: 80, 
+      rotateX: -15,
+      scale: 0.9,
+    });
+    gsap.set(content, { opacity: 0 });
 
     ScrollTrigger.create({
       trigger: card,
-      start: "top 85%",
+      start: "top 80%",
       onEnter: () => {
-        gsap.to(card, {
+        const tl = gsap.timeline();
+
+        // Card entrance with scale and rotation
+        tl.to(card, {
           opacity: 1,
           y: 0,
           rotateX: 0,
-          duration: 1,
-          delay: index * 0.15,
-          ease: "power3.out",
-        });
+          scale: 1,
+          duration: 0.8,
+          delay: index * 0.1,
+          ease: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        }, 0);
+
+        // Content fade
+        tl.to(content, {
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+        }, 0.2);
       },
     });
   }, [index]);
@@ -170,15 +214,15 @@ const BentoCard = ({
       onMouseMove={handleMouseMove}
     >
       <div ref={glowRef} className="bento-glow" />
-      <div className={styles.bentoContent}>
+      <div ref={contentRef} className={styles.bentoContent}>
         <div className={styles.bentoHeader}>
           <span className={styles.bentoNumber}>{String(index + 1).padStart(2, "0")}</span>
           <h3 className={styles.bentoTitle}>{category.title}</h3>
         </div>
         <p className={styles.bentoDescription}>{category.description}</p>
         <div className={styles.bentoSkills}>
-          {category.skills.map((skill) => (
-            <MagneticSkillTag key={skill.name} skill={skill} />
+          {category.skills.map((skill, skillIndex) => (
+            <MagneticSkillTag key={skill.name} skill={skill} index={skillIndex} />
           ))}
         </div>
       </div>
