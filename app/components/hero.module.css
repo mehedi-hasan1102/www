@@ -90,6 +90,7 @@
   font-weight: 400;
   text-transform: uppercase;
   font-family: 'Staatliches', serif;
+  color: var(--text);
 }
 
 .heroTitleAccent {
@@ -98,7 +99,7 @@
   letter-spacing: -0.025em;
   font-weight: 400;
   text-transform: uppercase;
-  color: #06B6D4;
+  color: var(--accent);
   font-family: 'Staatliches', serif;
 }
 
