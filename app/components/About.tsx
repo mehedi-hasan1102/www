@@ -103,7 +103,7 @@ export default function About() {
               }} />
             </div>
             {[
-              "I’m a MERN Stack Developer from Bangladesh with 1–2 years of programming experience, building scalable and user-friendly web applications.",
+              "I am a MERN Stack Developer from Bangladesh with 2 years of programming experience, building personal and practice-based web applications using modern JavaScript technologies",
               "I focus on clean code, performance, and modern web technologies across the full stack.",
               "I also write technical blogs and speak at developer meetups, continuously learning and growing as a developer.",
             ].map((text, index) => (
