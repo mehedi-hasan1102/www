@@ -577,7 +577,7 @@ export default function Navbar() {
           {/* Top Bar - Profile + Close */}
          
           {/* Navigation Items with Numbers */}
-          <div className="flex-1 space-y-8 mt-12">
+          <div className="flex-1 space-y-3 mt-12">
             {NAV_LINKS.map((link, idx) => (
               <Link
                 key={link.href}
@@ -617,7 +617,7 @@ export default function Navbar() {
 
             {/* More Dropdown */}
             {isMobileMoreOpen && (
-              <div className="pl-20 space-y-3">
+              <div className="pl-20 space-y-1">
                 {MORE_ITEMS.map((item) => {
                   if (item.isThemeToggle) {
                     return (
@@ -626,7 +626,7 @@ export default function Navbar() {
                         onClick={() => {
                           toggleTheme();
                         }}
-                        className="text-lg font-semibold block hover:scale-105 cursor-pointer transition-transform origin-left"
+                        className="text-lg  font-bold block hover:scale-105 cursor-pointer transition-transform origin-left"
                         style={{
                           color: 'var(--bg)',
                           background: 'transparent',
@@ -641,7 +641,7 @@ export default function Navbar() {
                     <Link
                       key={item.href || 'theme-toggle'}
                       href={item.href || '#'}
-                      className="text-lg font-semibold block hover:scale-105 cursor-pointer transition-transform origin-left"
+                      className="text-lg font-bold block hover:scale-105 cursor-pointer transition-transform origin-left"
                       style={{
                         color: 'var(--bg)',
                       }}
