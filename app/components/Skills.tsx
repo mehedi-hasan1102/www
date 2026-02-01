@@ -387,6 +387,7 @@ export default function Skills() {
               <div className={styles.orbitRing} />
               <div className={`${styles.orbitRing} ${styles.orbitRing2}`} />
             </div>
+            <div className={styles.bentoBorder} />
           </div>
         </div>
 
