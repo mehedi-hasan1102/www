@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import SplitType from 'split-type';
 import { FiDownload } from 'react-icons/fi';
@@ -9,6 +9,26 @@ import styles from './contact.module.css';
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+  const [currentTime, setCurrentTime] = useState<string>('');
+
+  useEffect(() => {
+    // Update time every second
+    const updateTime = () => {
+      const bangladeshTime = new Date().toLocaleString('en-US', {
+        timeZone: 'Asia/Dhaka',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+      });
+      setCurrentTime(bangladeshTime);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -89,12 +109,13 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Location */}
+          {/* Location & Local Time */}
           <div className={styles.footerColumn}>
-            <p className={styles.columnLabel}>LOCATION</p>
+            <p className={styles.columnLabel}>LOCATION & TIME</p>
             <div className={styles.locationInfo}>
               <p className={styles.locationCity}>DHAKA</p>
               <p className={styles.locationCountry}>BANGLADESH</p>
+              <p className={styles.currentTime}>{currentTime || '00:00:00 AM'}</p>
             </div>
           </div>
 
