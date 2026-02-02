@@ -301,7 +301,7 @@
 /* Footer Scrolling Text */
 .footerBigTextWrapper {
   background: rgba(6, 182, 212, 0.03);
-  padding: 1.5rem 0;
+  padding: clamp(1rem, 2vw, 1.5rem) 0;
   overflow: hidden;
   margin-top: 0;
 }
@@ -314,11 +314,17 @@
 .bigTextScroll span {
   display: inline-block;
   font-family: var(--font-staatliches), sans-serif;
-  font-size: 0.875rem;
-  letter-spacing: 0.3em;
+  font-size: clamp(0.7rem, 1.6vw, 0.875rem);
+  letter-spacing: clamp(0.15em, 0.8vw, 0.3em);
   color: rgba(6, 182, 212, 0.4);
   white-space: nowrap;
   animation: scrollText 20s linear infinite;
+}
+
+@media (max-width: 480px) {
+  .bigTextScroll span {
+    letter-spacing: 0.12em;
+  }
 }
 
 @keyframes scrollText {
