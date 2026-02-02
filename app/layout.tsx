@@ -4,9 +4,10 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Mehedi Hasan - Developer & Creative",
-  description: "An animated portfolio showcasing creative work and motion design",
+  title: "Mehedi Hasan | Developer, Storyteller & Technical Writer",
+  description: "Discover Mehedi Hasan’s portfolio of Next.js and React projects, case studies, and technical writing. Learn through stories and code.",
 };
+
 
 export default function RootLayout({
   children,
