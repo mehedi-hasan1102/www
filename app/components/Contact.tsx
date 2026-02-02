@@ -82,12 +82,14 @@ export default function Contact() {
         </div>
 
         {/* Email */}
-        <a
-          href="mailto:mehedi.hasan11023@gmail.com"
-          className={styles.emailDisplay}
-        >
-          mehedi.hasan11023@gmail.com
-        </a>
+        <div style={{ textAlign: 'center' }}>
+          <a
+            href="mailto:mehedi.hasan11023@gmail.com"
+            className={styles.emailDisplay}
+          >
+            mehedi.hasan11023@gmail.com
+          </a>
+        </div>
 
         {/* Content Grid */}
         <div className={styles.footerGrid}>
