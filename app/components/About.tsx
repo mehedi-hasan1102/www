@@ -13,6 +13,8 @@ export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const paragraphsRef = useRef<HTMLDivElement[]>([]);
+  const profileImageRef = useRef<HTMLDivElement>(null);
+  const profileBorderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -51,6 +53,62 @@ export default function About() {
           });
         }
       });
+
+      // Profile image hover animation
+      if (profileImageRef.current && profileBorderRef.current) {
+        const profileImage = profileImageRef.current;
+        const profileBorder = profileBorderRef.current;
+
+        // Mouse enter animation
+        const handleMouseEnter = () => {
+          // Image scale
+          gsap.to(profileImage, {
+            scale: 1.08,
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+
+          // Border animation with glow
+          gsap.to(profileBorder, {
+            top: '0.5rem',
+            left: '0.5rem',
+            right: '-0.5rem',
+            bottom: '-0.5rem',
+            borderWidth: '3px',
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+        };
+
+        // Mouse leave animation
+        const handleMouseLeave = () => {
+          // Reset image
+          gsap.to(profileImage, {
+            scale: 1,
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+
+          // Reset border
+          gsap.to(profileBorder, {
+            top: '1.5rem',
+            left: '1.5rem',
+            right: '-1.5rem',
+            bottom: '-1.5rem',
+            borderWidth: '2px',
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+        };
+
+        profileImage.addEventListener('mouseenter', handleMouseEnter);
+        profileImage.addEventListener('mouseleave', handleMouseLeave);
+
+        return () => {
+          profileImage.removeEventListener('mouseenter', handleMouseEnter);
+          profileImage.removeEventListener('mouseleave', handleMouseLeave);
+        };
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -78,7 +136,10 @@ export default function About() {
           {/* Left side - Profile Image */}
           <div className="flex justify-center md:justify-start">
             <div className="relative w-80 h-96">
-              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+              <div 
+                ref={profileImageRef}
+                className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+              >
                 <Image
                   src="/profile/profile - blue.png"
                   alt="Profile"
@@ -88,7 +149,7 @@ export default function About() {
                 />
               </div>
               {/* Animated border element */}
-              <div className={styles.profileImageBorder} />
+              <div ref={profileBorderRef} className={styles.profileImageBorder} />
             </div>
           </div>
 

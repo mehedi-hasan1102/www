@@ -83,15 +83,23 @@
   border: 2px solid var(--accent);
   border-radius: 8px;
   z-index: -1;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(var(--accent-rgb, 59, 130, 246), 0.3);
 }
 
-.profileImageBorder:hover {
-  top: 1rem;
-  left: 1rem;
-  right: -1rem;
-  bottom: -1rem;
+.profileImageBorder::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 8px;
+  background: linear-gradient(45deg, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
 /* Responsive - Tablet */
