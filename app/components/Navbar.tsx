@@ -291,7 +291,7 @@ export default function Navbar() {
           >
             <Image 
               src="/profile/profile%20-%20blue.png" 
-              alt="Mehdi Hasan's profile logo"
+              alt="Mehedi Hasan's profile logo"
               width={28}
               height={28}
               style={{
@@ -299,7 +299,7 @@ export default function Navbar() {
                 marginRight: '8px'
               }}
             />
-            Mehdi Hasan<span style={{ fontSize: '0.75em', verticalAlign: 'super' }}></span>
+            Mehedi Hasan<span style={{ fontSize: '0.75em', verticalAlign: 'super' }}></span>
           </Link>
 
           {/* Desktop Navigation Links - Right Side with pill background */}
