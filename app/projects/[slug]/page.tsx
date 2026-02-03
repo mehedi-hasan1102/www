@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Link from 'next/link';
 import { FiDownload } from 'react-icons/fi';
 import styles from './projectDetails.module.css';
 
@@ -268,7 +268,7 @@ export default function ProjectPage() {
   
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   // Fetch project data
   useEffect(() => {
@@ -281,11 +281,11 @@ export default function ProjectPage() {
         if (foundProject) {
           setProject(foundProject);
         } else {
-          setNotFound(true);
+          setIsNotFound(true);
         }
       } catch (error) {
         console.error('Error fetching project:', error);
-        setNotFound(true);
+        setIsNotFound(true);
       } finally {
         setLoading(false);
       }
@@ -365,27 +365,8 @@ export default function ProjectPage() {
     return <ProjectSkeleton />;
   }
 
-  if (notFound || !project) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center" style={{ background: 'var(--bg)' }}>
-        <h1 style={{ color: 'var(--text)' }} className="text-4xl font-bold mb-4">
-          Project Not Found
-        </h1>
-        <p style={{ color: 'var(--text-secondary)' }} className="mb-8">
-          The project you&#39;re looking for doesn&#39;t exist.
-        </p>
-        <Link
-          href="#works"
-          className="px-6 py-3 rounded-lg font-semibold transition-all"
-          style={{
-            background: 'linear-gradient(135deg, var(--accent), #7c3aed)',
-            color: 'white',
-          }}
-        >
-          Back to Works
-        </Link>
-      </div>
-    );
+  if (isNotFound || !project) {
+    notFound();
   }
 
   return (
