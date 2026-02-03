@@ -8,7 +8,7 @@
   position: relative;
   min-height: 100vh;
   background: var(--bg);
-  padding: 8rem 0;
+  padding: clamp(4rem, 8vw, 8rem) 0;
   overflow: hidden;
 }
 
@@ -48,7 +48,7 @@
 .projectsContainer {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 clamp(1rem, 4vw, 4rem);
   position: relative;
   z-index: 2;
 }
@@ -56,7 +56,7 @@
 /* Header */
 .projectsHeader {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: clamp(2.5rem, 5vw, 5rem);
   overflow: hidden;
 }
 
@@ -73,8 +73,8 @@
 .projectsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 4rem;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(2rem, 4vw, 4rem);
 }
 
 /* More Projects Button */
@@ -89,12 +89,12 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 1.25rem 2.5rem;
+  padding: clamp(0.875rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 2.5rem);
   border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: transparent;
   font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   letter-spacing: 0.15em;
   color: rgb(255, 255, 255);
   cursor: pointer;
@@ -313,68 +313,112 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .projectsGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  .projectsContainer {
-    padding: 0 2rem;
-  }
-
-  .projectsTitle {
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    gap: clamp(1rem, 2vw, 1.25rem);
   }
 
   .projectContent {
-    padding: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 1.5rem);
   }
 
   .projectImageContainer {
-    height: 150px;
+    height: clamp(120px, 25vw, 150px);
+  }
+
+  .projectNumber {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .projectTitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  .projectDescription {
+    font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  }
+
+  .projectTag {
+    font-size: clamp(0.7rem, 1vw, 0.8125rem);
+    padding: clamp(0.5rem, 1vw, 0.625rem) clamp(0.75rem, 1.5vw, 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(0.875rem, 2vw, 1.25rem);
+  }
+
+  .projectContent {
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+  }
+
+  .projectImageContainer {
+    height: clamp(100px, 20vw, 150px);
   }
 
   .projectHeader {
     flex-direction: column;
+    gap: clamp(0.5rem, 1vw, 1rem);
   }
 
   .projectNumber {
-    font-size: 2rem;
+    font-size: clamp(1.25rem, 3.5vw, 2rem);
+    min-width: clamp(50px, 10vw, 80px);
   }
 
   .projectTitle {
-    font-size: 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.25rem);
+  }
+
+  .projectDescription {
+    font-size: clamp(0.7rem, 1vw, 0.875rem);
+    margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem);
+  }
+
+  .projectTag {
+    font-size: clamp(0.65rem, 0.9vw, 0.8125rem);
+    padding: clamp(0.5rem, 0.8vw, 0.625rem) clamp(0.75rem, 1.2vw, 1rem);
+    gap: clamp(0.3rem, 0.5vw, 0.5rem);
   }
 }
 
 @media (max-width: 480px) {
   .projectsGrid {
     grid-template-columns: 1fr;
-  }
-
-  .projectsContainer {
-    padding: 0 1rem;
+    gap: clamp(0.875rem, 2vw, 1.25rem);
   }
 
   .projectContent {
-    padding: 1rem;
+    padding: clamp(0.875rem, 2vw, 1.5rem);
   }
 
   .projectImageContainer {
-    height: 120px;
+    height: clamp(80px, 40vw, 120px);
   }
 
   .projectNumber {
-    font-size: 1.5rem;
-    min-width: 60px;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    min-width: clamp(45px, 8vw, 60px);
   }
 
   .projectTitle {
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
   }
 
   .projectDescription {
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 0.9vw, 0.75rem);
+  }
+
+  .projectTag {
+    font-size: clamp(0.6rem, 0.8vw, 0.75rem);
+    padding: clamp(0.4rem, 0.7vw, 0.625rem) clamp(0.6rem, 1vw, 1rem);
+  }
+
+  .moreProjectsButton {
+    padding: clamp(0.75rem, 1.5vw, 0.875rem) clamp(1.25rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
   }
 }

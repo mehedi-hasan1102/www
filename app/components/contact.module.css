@@ -40,33 +40,34 @@
 /* Main Heading */
 .footerHeading {
   font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
-  font-size: 192px;
+  font-size: clamp(2rem, 12vw, 192px);
   font-weight: 400;
   font-style: normal;
-  line-height: 192px;
+  line-height: 1;
   letter-spacing: 0.03em;
   color: var(--text);
   text-align: center;
-  margin-bottom: 2rem;
-  white-space: nowrap;
+  margin-bottom: clamp(1rem, 2vw, 2rem);
+  white-space: normal;
 }
 
 /* Email Display */
 .emailDisplay {
   display: inline-block;
   font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
-  font-size: 40px;
+  font-size: clamp(1rem, 3vw, 40px);
   font-weight: 400;
-  line-height: 60px;
+  line-height: 1.4;
   font-style: normal;
   letter-spacing: 0.05em;
   color: var(--accent);
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: clamp(2rem, 4vw, 4rem);
   text-decoration: none;
   transition: all 0.3s ease;
-  word-break: break-all;
+  word-break: break-word;
   position: relative;
+  max-width: 90vw;
 }
 
 .emailDisplay::after {
@@ -92,9 +93,9 @@
 .footerGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4rem;
-  margin-bottom: 5rem;
-  padding: 3rem 0;
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-bottom: clamp(2rem, 4vw, 5rem);
+  padding: clamp(1.5rem, 2.5vw, 3rem) 0;
   border-top: 1px solid rgba(6, 182, 212, 0.1);
   border-bottom: 1px solid rgba(6, 182, 212, 0.1);
 }
@@ -106,17 +107,17 @@
 /* Column Label */
 .columnLabel {
   font-family: 'Staatliches', serif;
-  font-size: 0.875rem;
+  font-size: clamp(0.65rem, 1.2vw, 0.875rem);
   letter-spacing: 0.15em;
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(0.875rem, 1.5vw, 1.5rem);
   font-weight: 400;
 }
 
 /* Social Buttons */
 .socialButtons {
   display: flex;
-  gap: 2rem;
+  gap: clamp(1rem, 2vw, 2rem);
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
@@ -124,7 +125,7 @@
 
 .socialLink {
   font-family: 'Courier New', monospace;
-  font-size: 1rem;
+  font-size: clamp(0.75rem, 1.3vw, 1rem);
   letter-spacing: 0.05em;
   color: var(--text-secondary);
   text-decoration: none;
@@ -147,7 +148,7 @@
 
 .locationCity {
   font-family: 'Staatliches', serif;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   letter-spacing: 0.1em;
   color: var(--text);
   font-weight: 400;
@@ -155,7 +156,7 @@
 
 .locationCountry {
   font-family: 'Courier New', monospace;
-  font-size: 0.875rem;
+  font-size: clamp(0.7rem, 1vw, 0.875rem);
   letter-spacing: 0.1em;
   color: var(--text-secondary);
   font-weight: 400;
@@ -163,11 +164,11 @@
 
 .currentTime {
   font-family: 'Courier New', monospace;
-  font-size: 0.875rem;
+  font-size: clamp(0.7rem, 1vw, 0.875rem);
   letter-spacing: 0.05em;
   color: var(--accent);
   font-weight: 600;
-  margin-top: 0.5rem;
+  margin-top: clamp(0.25rem, 0.5vw, 0.5rem);
 }
 
 /* Time Info */
@@ -206,7 +207,7 @@
 
 .availabilityText {
   font-family: 'Staatliches', serif;
-  font-size: 0.875rem;
+  font-size: clamp(0.65rem, 1.1vw, 0.875rem);
   letter-spacing: 0.15em;
   color: #22c55e;
   font-weight: 400;
@@ -216,7 +217,7 @@
 .downloadSection {
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: clamp(2rem, 4vw, 4rem);
 }
 
 /* Download Button */
@@ -357,7 +358,7 @@
 @media (max-width: 1024px) {
   .contactSection {
     min-height: auto;
-    padding: 4rem 2rem;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
   }
 
   .contactDecor1 {
@@ -375,36 +376,46 @@
   }
 
   .footerHeading {
-    font-size: clamp(2.5rem, 10vw, 5rem);
-    margin-bottom: 1.5rem;
+    font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    line-height: 64px;
+    margin-bottom: clamp(0.875rem, 2vw, 1.5rem);
   }
 
   .emailDisplay {
-    font-size: clamp(0.95rem, 2.5vw, 1.25rem);
-    margin-bottom: 2.5rem;
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   }
 
   .footerGrid {
-    gap: 3rem;
-    padding: 2.5rem 0;
+    gap: clamp(2rem, 3vw, 3rem);
+    padding: clamp(1.5rem, 2vw, 2.5rem) 0;
   }
 
   .columnLabel {
-    font-size: 0.8rem;
-    margin-bottom: 1.25rem;
+    font-size: clamp(0.7rem, 1vw, 0.8rem);
+    margin-bottom: clamp(0.875rem, 1.5vw, 1.25rem);
   }
 
   .socialButtons {
-    gap: 1.75rem;
+    gap: clamp(1rem, 1.5vw, 1.75rem);
   }
 
   .socialLink {
-    font-size: 0.95rem;
+    font-size: clamp(0.8rem, 1.2vw, 0.95rem);
   }
 
   .downloadButton {
     padding: 1.25rem 2.5rem;
     font-size: 0.95rem;
+  }
+
+  .downloadButton svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -412,55 +423,65 @@
 @media (max-width: 768px) {
   .contactSection {
     min-height: auto;
-    padding: 3rem 1.5rem;
+    padding: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 2.5vw, 1.5rem);
   }
 
   .footerHeading {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    margin-bottom: 1.25rem;
+    font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    line-height: 64px;
+    margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
     white-space: normal;
   }
 
   .emailDisplay {
-    font-size: clamp(0.875rem, 2.5vw, 1.1rem);
-    margin-bottom: 2rem;
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
     overflow-wrap: break-word;
   }
 
   .footerGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 1.75rem 0;
+    gap: clamp(1.5rem, 2.5vw, 2rem);
+    padding: clamp(1.25rem, 1.8vw, 1.75rem) 0;
   }
 
   .columnLabel {
-    font-size: 0.75rem;
-    margin-bottom: 1rem;
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+    margin-bottom: clamp(0.75rem, 1.2vw, 1rem);
     letter-spacing: 0.12em;
   }
 
   .socialButtons {
-    gap: 1.25rem;
+    gap: clamp(0.875rem, 1.5vw, 1.25rem);
   }
 
   .socialLink {
-    font-size: 0.875rem;
+    font-size: clamp(1.05rem, 1.35vw, 1.25rem);
   }
 
   .locationCity {
-    font-size: 1.1rem;
+    font-size: clamp(1.2rem, 1.6vw, 1.35rem);
   }
 
   .locationCountry {
-    font-size: 0.8rem;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
   }
 
   .currentTime {
-    font-size: 0.8rem;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  }
+
+  .availabilityDot {
+    width: clamp(0.5rem, 1vw, 0.75rem);
+    height: clamp(0.5rem, 1vw, 0.75rem);
   }
 
   .availabilityText {
-    font-size: 0.8rem;
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
   }
 
   .downloadButton {
@@ -480,7 +501,7 @@
 @media (max-width: 600px) {
   .contactSection {
     min-height: auto;
-    padding: 2.5rem 1rem;
+    padding: clamp(1.25rem, 2.5vw, 2.5rem) clamp(0.875rem, 2vw, 1rem);
   }
 
   .contactDecor1 {
@@ -496,62 +517,71 @@
     height: 350px;
     bottom: 0%;
     right: -15%;
-    filter: blur(80px);
+    filtefamily: 'Staatliches', 'Staatliches Fallback', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    line-height: 64px
   }
 
   .footerHeading {
-    font-size: clamp(1.75rem, 7vw, 2.5rem);
-    margin-bottom: 1rem;
+    font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    line-height: 64px;
+    margin-bottom: clamp(0.625rem, 1.2vw, 1rem);
     letter-spacing: 0.025em;
   }
 
   .emailDisplay {
-    font-size: 0.8rem;
-    margin-bottom: 1.75rem;
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: clamp(1rem, 2vw, 1.75rem);
     letter-spacing: 0.03em;
     word-break: break-word;
   }
 
   .footerGrid {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
-    padding: 1.5rem 0;
+    gap: clamp(1.25rem, 2vw, 1.75rem);
+    padding: clamp(1rem, 1.5vw, 1.5rem) 0;
   }
 
   .columnLabel {
-    font-size: 0.7rem;
-    margin-bottom: 0.875rem;
+    font-size: clamp(0.9rem, 1.25vw, 1rem);
+    margin-bottom: clamp(0.625rem, 1vw, 0.875rem);
     letter-spacing: 0.12em;
   }
 
   .socialButtons {
-    gap: 1rem;
+    gap: clamp(0.75rem, 1.3vw, 1rem);
   }
 
   .socialLink {
-    font-size: 0.8rem;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
   }
 
   .locationCity {
-    font-size: 1rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.2rem);
   }
 
   .locationCountry {
-    font-size: 0.75rem;
+    font-size: clamp(0.95rem, 1.25vw, 1.05rem);
   }
 
   .currentTime {
-    font-size: 0.75rem;
-    margin-top: 0.375rem;
+    font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+    margin-top: clamp(0.2rem, 0.4vw, 0.375rem);
   }
 
   .availabilityDot {
-    width: 0.6rem;
-    height: 0.6rem;
+    width: clamp(0.45rem, 0.8vw, 0.6rem);
+    height: clamp(0.45rem, 0.8vw, 0.6rem);
   }
 
   .availabilityText {
-    font-size: 0.7rem;
+    font-size: clamp(0.9rem, 1.25vw, 1rem);
     letter-spacing: 0.12em;
   }
 
@@ -574,7 +604,7 @@
 /* Mobile Small - 480px and below */
 @media (max-width: 480px) {
   .contactSection {
-    padding: 2rem 0.875rem;
+    padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 1.5vw, 0.875rem);
   }
 
   .contactDecor1 {
@@ -594,60 +624,65 @@
   }
 
   .footerHeading {
-    font-size: clamp(1.5rem, 6vw, 2.25rem);
-    margin-bottom: 0.875rem;
+    font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    line-height: 64px;
+    margin-bottom: clamp(0.5rem, 1vw, 0.875rem);
     letter-spacing: 0.02em;
   }
 
   .emailDisplay {
-    font-size: 0.75rem;
-    margin-bottom: 1.5rem;
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: clamp(0.875rem, 1.8vw, 1.5rem);
     letter-spacing: 0.02em;
   }
 
   .footerGrid {
-    gap: 1.5rem;
-    padding: 1.25rem 0;
+    gap: clamp(1rem, 1.8vw, 1.5rem);
+    padding: clamp(0.875rem, 1.3vw, 1.25rem) 0;
   }
 
   .columnLabel {
-    font-size: 0.65rem;
-    margin-bottom: 0.75rem;
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    margin-bottom: clamp(0.5rem, 0.9vw, 0.75rem);
     letter-spacing: 0.1em;
   }
 
   .socialButtons {
-    gap: 0.875rem;
+    gap: clamp(0.65rem, 1.1vw, 0.875rem);
     flex-wrap: wrap;
   }
 
   .socialLink {
-    font-size: 0.75rem;
+    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
     letter-spacing: 0.03em;
   }
 
   .socialLink:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 
   .locationCity {
-    font-size: 0.95rem;
+    font-size: clamp(1.1rem, 1.4vw, 1.2rem);
     letter-spacing: 0.08em;
   }
 
   .locationCountry {
-    font-size: 0.7rem;
+    font-size: clamp(0.9rem, 1.15vw, 1rem);
     letter-spacing: 0.08em;
   }
 
   .currentTime {
-    font-size: 0.7rem;
+    font-size: clamp(0.9rem, 1.15vw, 1rem);
     letter-spacing: 0.02em;
-    margin-top: 0.25rem;
+    margin-top: clamp(0.15rem, 0.3vw, 0.25rem);
   }
 
   .availabilityText {
-    font-size: 0.65rem;
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
     letter-spacing: 0.08em;
   }
 
@@ -674,12 +709,17 @@
   }
 
   .footerHeading {
-    font-size: clamp(1.25rem, 5vw, 1.875rem);
+    font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    line-height: 64px;
     margin-bottom: 0.75rem;
   }
 
   .emailDisplay {
-    font-size: 0.7rem;
+    font-size: 24px;
+    line-height: 36px;
     margin-bottom: 1.25rem;
   }
 
@@ -695,5 +735,10 @@
   .downloadButton {
     padding: 0.625rem 1rem;
     font-size: 0.65rem;
+  }
+
+  .downloadButton svg {
+    width: 12px;
+    height: 12px;
   }
 }
