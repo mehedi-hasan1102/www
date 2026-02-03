@@ -113,13 +113,32 @@
 
 .projectPreview {
   width: 100%;
-  height: 500px;
+  aspect-ratio: 16 / 9;
+  max-height: 450px;
   position: relative;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--card-border);
   background: rgba(255, 255, 255, 0.02);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1024px) {
+  .projectPreview {
+    max-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projectPreview {
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectPreview {
+    max-height: 220px;
+  }
 }
 
 .previewImage {
