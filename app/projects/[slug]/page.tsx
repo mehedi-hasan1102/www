@@ -5,7 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { FiExternalLink } from 'react-icons/fi';
+import { FiDownload } from 'react-icons/fi';
 import styles from './projectDetails.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -71,16 +71,6 @@ export default function ProjectDetails() {
         stagger: 0.02,
         duration: 1,
         ease: 'power4.out',
-      });
-
-      // Hero content animations
-      gsap.from('[data-hero-animate]', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.15,
-        delay: 0.5,
-        ease: 'power3.out',
       });
 
       // Parallax image effect
@@ -196,14 +186,21 @@ export default function ProjectDetails() {
               {project.description}
             </p>
 
+
+
+
+
+
+
             <div className={styles.heroButtons} data-hero-animate>
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.btnPrimary}
+                className={styles.heroDownloadButton}
               >
-                Live Demo
+                <span>LIVE DEMO</span>
+                <FiDownload size={18} aria-hidden="true" />
               </a>
               {project.frontendUrl && (
                 <a
@@ -243,6 +240,7 @@ export default function ProjectDetails() {
         </div>
       </section>
 
+    
       {/* Screenshots */}
       <section className={styles.screenshotsSection} data-reveal-section>
         <h2 className={styles.sectionTitle}>SCREENSHOTS</h2>
