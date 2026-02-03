@@ -243,55 +243,6 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className={styles.featuresSection} data-reveal-section>
-        <h2 className={styles.sectionTitle}>KEY FEATURES</h2>
-        <div className={styles.featuresGrid}>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🛒</div>
-            <h3 className={styles.featureTitle}>Smart Cart System</h3>
-            <p className={styles.featureDesc}>
-              Persistent shopping cart with real-time updates, quantity management, and saved items for later.
-            </p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>💳</div>
-            <h3 className={styles.featureTitle}>Secure Payments</h3>
-            <p className={styles.featureDesc}>
-              Integrated Stripe payment processing with support for multiple payment methods and currencies.
-            </p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>📊</div>
-            <h3 className={styles.featureTitle}>Analytics Dashboard</h3>
-            <p className={styles.featureDesc}>
-              Comprehensive admin dashboard with sales analytics, inventory reporting, and customer insights.
-            </p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🔐</div>
-            <h3 className={styles.featureTitle}>Auth & Security</h3>
-            <p className={styles.featureDesc}>
-              Robust authentication system with JWT tokens, role-based access control, and data encryption.
-            </p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>⚡</div>
-            <h3 className={styles.featureTitle}>Lightning Fast</h3>
-            <p className={styles.featureDesc}>
-              Optimized performance with lazy loading, image optimization, and caching for quick response times.
-            </p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🌍</div>
-            <h3 className={styles.featureTitle}>Multi-language</h3>
-            <p className={styles.featureDesc}>
-              Full i18n support with multiple language detection and seamless locale switching.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Screenshots */}
       <section className={styles.screenshotsSection} data-reveal-section>
         <h2 className={styles.sectionTitle}>SCREENSHOTS</h2>
