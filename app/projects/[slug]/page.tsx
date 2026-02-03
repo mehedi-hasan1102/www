@@ -26,14 +26,275 @@ interface Project {
   futurePlans?: string[];
 }
 
-  const [mounted, setMounted] = useState(false);
+// Skeleton Loading Component
+const ProjectSkeleton = () => {
+  const isDarkMode = typeof document !== 'undefined' ? !document.documentElement.classList.contains('light-mode') : true;
+  const shimmerBg = isDarkMode ? '#2a2a2a' : '#e0e0e0';
 
+  return (
+    <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
+      {/* Back Button Skeleton */}
+      <div style={{ padding: '24px', marginBottom: '16px' }}>
+        <div
+          style={{
+            width: '120px',
+            height: '24px',
+            borderRadius: '4px',
+            background: shimmerBg,
+            animation: 'shimmer 2s infinite',
+          }}
+        />
+      </div>
+
+      {/* Hero Section Skeleton */}
+      <section style={{ padding: '48px 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', maxWidth: '1200px', margin: '0 auto' }}>
+          <div>
+            {/* Title Skeleton */}
+            <div style={{ marginBottom: '24px' }}>
+              <div
+                style={{
+                  width: '80%',
+                  height: '48px',
+                  borderRadius: '8px',
+                  background: shimmerBg,
+                  marginBottom: '16px',
+                  animation: 'shimmer 2s infinite',
+                }}
+              />
+              <div
+                style={{
+                  width: '60%',
+                  height: '48px',
+                  borderRadius: '8px',
+                  background: shimmerBg,
+                  animation: 'shimmer 2s infinite',
+                }}
+              />
+            </div>
+
+            {/* Category Skeleton */}
+            <div
+              style={{
+                width: '100px',
+                height: '20px',
+                borderRadius: '4px',
+                background: shimmerBg,
+                marginBottom: '16px',
+                animation: 'shimmer 2s infinite',
+              }}
+            />
+
+            {/* Description Skeleton */}
+            <div style={{ marginBottom: '24px' }}>
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  style={{
+                    width: i === 3 ? '70%' : '100%',
+                    height: '16px',
+                    borderRadius: '4px',
+                    background: shimmerBg,
+                    marginBottom: '12px',
+                    animation: 'shimmer 2s infinite',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Buttons Skeleton */}
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <div
+                style={{
+                  width: '140px',
+                  height: '44px',
+                  borderRadius: '8px',
+                  background: shimmerBg,
+                  animation: 'shimmer 2s infinite',
+                }}
+              />
+              <div
+                style={{
+                  width: '140px',
+                  height: '44px',
+                  borderRadius: '8px',
+                  background: shimmerBg,
+                  animation: 'shimmer 2s infinite',
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Image Skeleton */}
+          <div>
+            <div
+              style={{
+                width: '100%',
+                height: '400px',
+                borderRadius: '12px',
+                background: shimmerBg,
+                animation: 'shimmer 2s infinite',
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Skeleton */}
+      <section style={{ padding: '48px 24px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div
+            style={{
+              width: '200px',
+              height: '32px',
+              borderRadius: '8px',
+              background: shimmerBg,
+              marginBottom: '24px',
+              animation: 'shimmer 2s infinite',
+            }}
+          />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '12px' }}>
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div
+                key={i}
+                style={{
+                  width: '100%',
+                  height: '40px',
+                  borderRadius: '8px',
+                  background: shimmerBg,
+                  animation: 'shimmer 2s infinite',
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Screenshots Skeleton */}
+      <section style={{ padding: '48px 24px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div
+            style={{
+              width: '200px',
+              height: '32px',
+              borderRadius: '8px',
+              background: shimmerBg,
+              marginBottom: '24px',
+              animation: 'shimmer 2s infinite',
+            }}
+          />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px' }}>
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                style={{
+                  width: '100%',
+                  height: '300px',
+                  borderRadius: '8px',
+                  background: shimmerBg,
+                  animation: 'shimmer 2s infinite',
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom Cards Skeleton */}
+      <section style={{ padding: '48px 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', maxWidth: '1200px', margin: '0 auto' }}>
+          {[1, 2].map((i) => (
+            <div key={i} style={{ padding: '24px', borderRadius: '12px', background: isDarkMode ? '#1a1a1a' : '#f9f9f9' }}>
+              <div
+                style={{
+                  fontSize: '32px',
+                  marginBottom: '16px',
+                  height: '32px',
+                }}
+              >
+                {'   '}
+              </div>
+              <div
+                style={{
+                  width: '120px',
+                  height: '24px',
+                  borderRadius: '4px',
+                  background: shimmerBg,
+                  marginBottom: '16px',
+                  animation: 'shimmer 2s infinite',
+                }}
+              />
+              <div>
+                {[1, 2, 3, 4].map((j) => (
+                  <div key={j} style={{ marginBottom: '12px' }}>
+                    <div
+                      style={{
+                        width: '100%',
+                        height: '16px',
+                        borderRadius: '4px',
+                        background: shimmerBg,
+                        animation: 'shimmer 2s infinite',
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default function ProjectPage() {
+  const router = useRouter();
+  const params = useParams();
+  const pageRef = useRef<HTMLDivElement>(null);
+  
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+
+  // Fetch project data
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    const fetchProject = async () => {
+      try {
+        const response = await fetch('/data/projects.json');
+        const projects: Project[] = await response.json();
+        const foundProject = projects.find((p) => p.slug === params.slug);
+        
+        if (foundProject) {
+          setProject(foundProject);
+        } else {
+          setNotFound(true);
+        }
+      } catch (error) {
+        console.error('Error fetching project:', error);
+        setNotFound(true);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (loading) {
-    const isDarkMode = mounted ? !document.documentElement.classList.contains('light-mode') : true;
+    if (params.slug) {
+      fetchProject();
+    }
+  }, [params.slug]);
 
   // GSAP animations
   useEffect(() => {
@@ -101,11 +362,7 @@ interface Project {
   }, [project]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg)' }}>
-        <p style={{ color: 'var(--text)' }}>Loading project...</p>
-      </div>
-    );
+    return <ProjectSkeleton />;
   }
 
   if (notFound || !project) {
@@ -144,8 +401,6 @@ interface Project {
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
           <div className={styles.heroLeft}>
-           
-
             <h1 className={styles.heroTitle}>
               {project.title.split('').map((char, i) => (
                 <span key={i} className="hero-title-char" style={{ display: 'inline-block' }}>
@@ -153,18 +408,12 @@ interface Project {
                 </span>
               ))}
             </h1>
- <p className={styles.categoryLabel} data-hero-animate>
+            <p className={styles.categoryLabel} data-hero-animate>
               {project.category}
             </p>
             <p className={styles.heroDescription} data-hero-animate>
               {project.description}
             </p>
-
-
-
-
-
-
 
             <div className={styles.heroButtons}>
               <a
@@ -214,7 +463,6 @@ interface Project {
         </div>
       </section>
 
-    
       {/* Screenshots */}
       <section className={styles.screenshotsSection} data-reveal-section>
         <h2 className={styles.sectionTitle}>SCREENSHOTS</h2>
