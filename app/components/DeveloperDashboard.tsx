@@ -2,7 +2,7 @@
 
 import styles from './dashboard.module.css';
 import Image from 'next/image';
-import { FiGithub, FiStar, FiGitBranch, FiCode } from 'react-icons/fi';
+import { FiGithub, FiStar, FiGitBranch, FiCode, FiExternalLink } from 'react-icons/fi';
 import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 
@@ -244,6 +244,9 @@ const ProjectCardItem = ({ project }: { project: Project }) => {
       onClick={handleClick}
     >
       <div ref={glowRef} className={styles.projectGlow} />
+      <span className={styles.projectLinkIcon} aria-hidden="true">
+        <FiExternalLink size={18} />
+      </span>
       <h3 className={styles.projectName}>
         {project.name}
       </h3>
