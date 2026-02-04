@@ -54,6 +54,27 @@ const DiagonalMarquee = () => {
           </div>
         </div>
       </div>
+
+      {/* Second Marquee for X Pattern */}
+      <div className={styles.marqueeContainer2}>
+        <div className={styles.marqueeTrack2}>
+          <div className={styles.marqueeContent2}>
+            {Array(4)
+              .fill(null)
+              .map((_, idx) =>
+                items.map((item, i) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div key={`${idx}-${i}`} className={styles.itemRow}>
+                      <IconComponent className={styles.icon} />
+                      <span className={styles.label}>{item.label}</span>
+                    </div>
+                  );
+                })
+              )}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
