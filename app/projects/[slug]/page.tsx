@@ -361,6 +361,52 @@ export default function ProjectPage() {
     return () => ctx.revert();
   }, [project]);
 
+  // Card glow effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const cards = document.querySelectorAll(`.${styles.bottomCard}`);
+      cards.forEach((card) => {
+        const glow = card.querySelector(`.${styles.bottomGlow}`) as HTMLElement;
+        if (!glow) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Check if mouse is within card bounds
+        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+          gsap.to(glow, {
+            left: x - 60,
+            top: y - 60,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+          glow.style.opacity = '0.8';
+        } else {
+          glow.style.opacity = '0';
+        }
+      });
+    };
+
+    const handleMouseLeave = () => {
+      const cards = document.querySelectorAll(`.${styles.bottomCard}`);
+      cards.forEach((card) => {
+        const glow = card.querySelector(`.${styles.bottomGlow}`) as HTMLElement;
+        if (glow) {
+          glow.style.opacity = '0';
+        }
+      });
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   if (loading) {
     return <ProjectSkeleton />;
   }
@@ -464,6 +510,7 @@ export default function ProjectPage() {
       <section className={styles.bottomSection} data-reveal-section>
         <div className={styles.bottomGrid}>
           <div className={styles.bottomCard}>
+            <div className={styles.bottomGlow}></div>
             <div className={styles.cardIcon}>💡</div>
             <h3 className={styles.cardTitle}>Challenges</h3>
             <ul className={styles.cardList}>
@@ -484,6 +531,7 @@ export default function ProjectPage() {
           </div>
 
           <div className={styles.bottomCard}>
+            <div className={styles.bottomGlow}></div>
             <div className={styles.cardIcon}>🎯</div>
             <h3 className={styles.cardTitle}>Key Learnings</h3>
             <ul className={styles.cardList}>
