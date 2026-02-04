@@ -357,7 +357,7 @@ const DeveloperDashboard = () => {
           <div className={`${styles.card}`} style={{ padding: 0, overflow: 'hidden' }}>
             <iframe
               style={{ borderRadius: '12px' }}
-              src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/playlist/19V2ZdQ8FFZbw7Xu00Eoii?utm_source=generator&theme=0"
               width="100%"
               height="352"
               frameBorder="0"
