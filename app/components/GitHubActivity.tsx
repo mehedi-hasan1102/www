@@ -1,19 +1,91 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './github.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Skeleton Loading Component
+const GitHubActivitySkeleton = () => {
+  const isDarkMode = typeof document !== 'undefined' ? !document.documentElement.classList.contains('light-mode') : true;
+  const shimmerBg = isDarkMode ? '#2a2a2a' : '#d1d5db';
+
+  return (
+    <section style={{ padding: '4rem 2rem', background: 'var(--bg)' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        {/* Header Skeleton */}
+        <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
+          <div
+            style={{
+              width: '250px',
+              height: '32px',
+              borderRadius: '8px',
+              background: shimmerBg,
+              marginBottom: '16px',
+              animation: 'shimmer 2s infinite',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          />
+          <div
+            style={{
+              width: '100%',
+              maxWidth: '400px',
+              height: '20px',
+              borderRadius: '4px',
+              background: shimmerBg,
+              animation: 'shimmer 2s infinite',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          />
+        </div>
+
+        {/* Graph Skeleton */}
+        <div
+          style={{
+            width: '100%',
+            height: '200px',
+            borderRadius: '12px',
+            background: shimmerBg,
+            animation: 'shimmer 2s infinite',
+            border: '1px solid rgba(6, 182, 212, 0.1)',
+          }}
+        />
+      </div>
+
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      `}</style>
+    </section>
+  );
+};
+
 export default function GitHubActivity() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    const timer = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (loading || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {
       // Header animation
@@ -43,7 +115,11 @@ export default function GitHubActivity() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [loading]);
+
+  if (loading) {
+    return <GitHubActivitySkeleton />;
+  }
 
   return (
     <section ref={sectionRef} className={styles.section}>

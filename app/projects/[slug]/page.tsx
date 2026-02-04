@@ -29,7 +29,7 @@ interface Project {
 // Skeleton Loading Component
 const ProjectSkeleton = () => {
   const isDarkMode = typeof document !== 'undefined' ? !document.documentElement.classList.contains('light-mode') : true;
-  const shimmerBg = isDarkMode ? '#2a2a2a' : '#e0e0e0';
+  const shimmerBg = isDarkMode ? '#2a2a2a' : '#d1d5db';
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
