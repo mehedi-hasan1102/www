@@ -46,7 +46,7 @@ const DiagonalMarquee = () => {
           trigger: 'body',
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 1,
+          scrub: 5,
           markers: false,
         },
       }
@@ -58,14 +58,14 @@ const DiagonalMarquee = () => {
       { x: 0 },
       {
         x: () => {
-          const distance = (contentRef2.current?.offsetWidth || 0) / 2;
+          const distance = -(contentRef2.current?.offsetWidth || 0) / 2;
           return distance;
         },
         scrollTrigger: {
           trigger: 'body',
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 1,
+          scrub: 5,
           markers: false,
         },
       }
