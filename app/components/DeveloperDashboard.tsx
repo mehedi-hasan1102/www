@@ -266,6 +266,49 @@ const ProjectCardItem = ({ project }: { project: Project }) => {
   );
 };
 
+// Profile Card Component with Glow Effect
+const ProfileCardItem = ({ userProfile }: { userProfile: UserProfile }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || !glowRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    gsap.to(glowRef.current, {
+      x: x,
+      y: y,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={`${styles.card} ${styles.profileCard}`}
+      onMouseMove={handleMouseMove}
+    >
+      <div ref={glowRef} className={styles.cardGlow} />
+      <div className={styles.profileContent} style={{ position: 'relative', zIndex: 1 }}>
+        <Image 
+          src="/profile/profile - blue.png" 
+          alt={userProfile.name}
+          width={48}
+          height={48}
+          className={styles.profileAvatar}
+        />
+        <div>
+          <div className={styles.profileName}>{userProfile.name}</div>
+        </div>
+        <p className={styles.profileBio}>{userProfile.bio}</p>
+      </div>
+    </div>
+  );
+};
+
 // Stats Card Component with Glow Effect
 const StatsCardItem = ({ stats }: { stats: GithubStats }) => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -470,21 +513,7 @@ const DeveloperDashboard = () => {
         {/* Main Grid with Profile, Stats, and Now Playing */}
         <div className={styles.mainGrid}>
           {/* Profile Card */}
-          <div className={`${styles.card} ${styles.profileCard}`}>
-            <div className={styles.profileContent}>
-              <Image 
-                src="/profile/profile - blue.png" 
-                alt={userProfile.name}
-                width={48}
-                height={48}
-                className={styles.profileAvatar}
-              />
-              <div>
-                <div className={styles.profileName}>{userProfile.name}</div>
-              </div>
-              <p className={styles.profileBio}>{userProfile.bio}</p>
-            </div>
-          </div>
+          <ProfileCardItem userProfile={userProfile} />
 
           {/* GitHub Stats Card */}
           <StatsCardItem stats={stats} />
