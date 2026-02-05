@@ -3,7 +3,7 @@
   padding: 8rem 0;
   position: relative;
   background: var(--bg);
-  min-height: 100vh;
+  min-height: 10vh;
   overflow: hidden;
 }
 
