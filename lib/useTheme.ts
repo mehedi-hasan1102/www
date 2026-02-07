@@ -32,8 +32,8 @@ export function useTheme() {
     } else if (stored === 'dark') {
       shouldBeDark = true;
     } else {
-      // No stored preference, check system preference
-      shouldBeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // No stored preference, default to dark theme
+      shouldBeDark = true;
     }
 
     // Update DOM first (synchronously)
