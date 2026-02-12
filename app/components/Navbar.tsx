@@ -25,7 +25,7 @@ const MORE_ITEMS = [
   // { label: 'Spotify', href: '/spotify' },
   // { label: 'Feedback', href: '/feedback' },
   // { label: 'Snippets', href: '/snippets' },
-  { label: 'Links', href: '/social-corner' },
+  { label: 'Links', href: '/links' },
   { label: 'Light Mode', isThemeToggle: true },
 ];
 
